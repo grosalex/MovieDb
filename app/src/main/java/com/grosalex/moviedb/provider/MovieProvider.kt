@@ -10,7 +10,7 @@ class MovieProvider : MoviesContract.Provider {
         MovieDbApp.get().service.discoverMovies().enqueue(object : ApiCallback<MoviesResponse>() {
             override fun onSuccess(body: MoviesResponse?) {
                 if (body != null)
-                    onMoviesFetched.onSucces(body.results)
+                    body.results?.let { onMoviesFetched.onSucces(it) }
             }
 
             override fun onAnyError(error: String) {
