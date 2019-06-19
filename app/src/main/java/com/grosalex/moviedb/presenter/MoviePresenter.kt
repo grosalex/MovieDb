@@ -9,7 +9,7 @@ class MoviePresenter(val view:MoviesContract.View, val provider: MoviesContract.
         provider.getMovies(this)
     }
 
-    override fun onSucces(movies: ArrayList<Movie>) {
+    override fun onSuccess(movies: ArrayList<Movie>) {
         view.bind(movies)
     }
 

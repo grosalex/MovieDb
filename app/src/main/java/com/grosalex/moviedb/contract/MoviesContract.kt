@@ -16,7 +16,7 @@ interface MoviesContract {
 
     interface Provider {
         interface OnMoviesFetched {
-            fun onSucces(movies: ArrayList<Movie>)
+            fun onSuccess(movies: ArrayList<Movie>)
             fun onFailure(message: String)
         }
 
