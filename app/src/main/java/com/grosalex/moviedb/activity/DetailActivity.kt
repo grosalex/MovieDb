@@ -4,9 +4,9 @@ import android.os.Bundle
 import android.widget.ImageView
 import android.widget.TextView
 import android.widget.Toast
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.youtube.player.YouTubeBaseActivity
 import com.google.gson.Gson
 import com.grosalex.moviedb.Navigator
 import com.grosalex.moviedb.R
@@ -20,7 +20,7 @@ import com.grosalex.moviedb.provider.TrailerProvider
 import com.squareup.picasso.Picasso
 
 
-class DetailActivity : AppCompatActivity(), TrailerContract.View {
+class DetailActivity : YouTubeBaseActivity(), TrailerContract.View {
 
     lateinit var ivPoster: ImageView
     lateinit var tvTitle: TextView
@@ -32,13 +32,11 @@ class DetailActivity : AppCompatActivity(), TrailerContract.View {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_detail)
-
         val detail = intent.getStringExtra(Navigator.DETAIL_KEY) ?: return
         val movie = Gson().fromJson(detail, Movie::class.java)
 
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_white_24)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+/*        supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_white_24)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)*/
         initView()
         bindMovie(movie)
         presenter = TrailerPresenter(this, TrailerProvider())
@@ -67,10 +65,10 @@ class DetailActivity : AppCompatActivity(), TrailerContract.View {
         rvTrailers.adapter = adapter
     }
 
-    override fun onSupportNavigateUp(): Boolean {
+/*    override fun onSupportNavigateUp(): Boolean {
         onBackPressed()
         return true
-    }
+    }*/
 
     override fun loading() {
         adapter.trailers.clear()
