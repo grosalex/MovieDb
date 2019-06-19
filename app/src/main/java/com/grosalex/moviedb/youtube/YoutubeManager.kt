@@ -14,6 +14,10 @@ object YoutubeManager {
     }
 
     fun playVideo(id:String){
-        youTubePlayer?.loadVideo(id)
+        youTubePlayer?.cueVideo(id)
+    }
+
+    fun releaseCurrentPlayer() {
+        youTubePlayer?.release()
     }
 }

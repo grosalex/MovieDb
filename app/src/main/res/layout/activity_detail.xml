@@ -33,17 +33,29 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tv_title"/>
-
+<!--
     <androidx.recyclerview.widget.RecyclerView
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:id="@+id/rv_trailers"
             android:paddingEnd="@dimen/spacing_common"
+            android:visibility="gone"
             android:clipToPadding="false"
             android:layout_marginTop="@dimen/spacing_common"
             android:layout_marginBottom="@dimen/spacing_common"
             app:layout_constraintTop_toBottomOf="@id/tv_overview"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"/>
+            app:layout_constraintEnd_toEndOf="parent"/>-->
+
+    <androidx.viewpager.widget.ViewPager
+            android:id="@+id/pager"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:padding="@dimen/spacing_common"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_overview"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="parent"
+    />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
