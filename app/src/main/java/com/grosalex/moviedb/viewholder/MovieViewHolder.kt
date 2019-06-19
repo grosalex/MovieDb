@@ -5,6 +5,7 @@ import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.grosalex.moviedb.Navigator
 import com.grosalex.moviedb.R
 import com.grosalex.moviedb.api.MovieService
 import com.grosalex.moviedb.model.Movie
@@ -24,5 +25,8 @@ class MovieViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
         tvTitle.text = movie.title
         tvReleaseDate.text = movie.releaseDate
         tvOverview.text = movie.overview
+        itemView.setOnClickListener {
+            Navigator.openDetail(itemView.context, movie)
+        }
     }
 }
