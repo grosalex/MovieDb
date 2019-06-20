@@ -62,7 +62,6 @@ class DetailActivity : AppCompatActivity(), TrailerContract.View {
 
     private fun initViewPager() {
         viewPager = findViewById(R.id.pager)
-        viewPager.offscreenPageLimit = 0
         pagerAdapter = TrailerPagerAdapter(supportFragmentManager)
 
         viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
@@ -100,10 +99,15 @@ class DetailActivity : AppCompatActivity(), TrailerContract.View {
             pagerAdapter.pages.add(trailerFragment)
         }
         viewPager.adapter?.notifyDataSetChanged()
-        viewPager.currentItem = 0
+        viewPager.currentItem = DEFAULT_POSITION
+        (pagerAdapter.getItem(DEFAULT_POSITION) as TrailerFragment).initialize()
     }
 
     override fun onError(message: String) {
         Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+    }
+
+    companion object {
+        const val DEFAULT_POSITION = 0
     }
 }
