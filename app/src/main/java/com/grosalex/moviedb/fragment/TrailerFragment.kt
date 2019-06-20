@@ -9,11 +9,12 @@ import com.grosalex.moviedb.youtube.YoutubeManager
 
 class TrailerFragment : YouTubePlayerSupportFragment(),
     YouTubePlayer.OnInitializedListener {
+
     override fun onInitializationSuccess(
         provider: YouTubePlayer.Provider?,
         youTubePlayer: YouTubePlayer?,
-        wasRestored: Boolean
-    ) {
+        wasRestored: Boolean) {
+
         if (youTubePlayer != null) {
             YoutubeManager.changePlayer(youTubePlayer)
             val key = (this as Fragment).arguments?.getString(Navigator.PLAYER_KEY)
@@ -23,8 +24,9 @@ class TrailerFragment : YouTubePlayerSupportFragment(),
         }
     }
 
-    override fun onInitializationFailure(provider: YouTubePlayer.Provider?, youTubePlayer: YouTubeInitializationResult?) {
-    }
+    override fun onInitializationFailure(
+        provider: YouTubePlayer.Provider?,
+        youTubePlayer: YouTubeInitializationResult?) { }
 
     fun initialize() {
         initialize(YoutubeManager.YOUTUBE_API_KEY, this)

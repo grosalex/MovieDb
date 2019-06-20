@@ -8,7 +8,7 @@ import retrofit2.Response
 
 abstract class ApiCallback<T> : Callback<T> {
     override fun onFailure(call: Call<T>, t: Throwable) {
-        Log.e("WsError", t.message)
+        Log.e(TAG, t.message)
     }
 
     override fun onResponse(call: Call<T>, response: Response<T>) {
@@ -21,4 +21,8 @@ abstract class ApiCallback<T> : Callback<T> {
 
     abstract fun onSuccess(body: T?)
     abstract fun onAnyError(error: String)
+
+    companion object {
+        val TAG = ApiCallback::class.java.name
+    }
 }

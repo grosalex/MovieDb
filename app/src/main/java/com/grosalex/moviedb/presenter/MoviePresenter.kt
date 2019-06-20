@@ -6,6 +6,7 @@ import com.grosalex.moviedb.model.Movie
 class MoviePresenter(val view:MoviesContract.View, val provider: MoviesContract.Provider):MoviesContract.Presenter, MoviesContract.Provider.OnMoviesFetched {
 
     override fun sendRequest() {
+        view.loading()
         provider.getMovies(this)
     }
 

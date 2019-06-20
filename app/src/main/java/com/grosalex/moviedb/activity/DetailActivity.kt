@@ -39,8 +39,10 @@ class DetailActivity : AppCompatActivity(), TrailerContract.View {
 
         supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_white_24)
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
         initView()
         bindMovie(movie)
+
         presenter = TrailerPresenter(this, TrailerProvider())
         presenter.sendRequest(movie)
     }

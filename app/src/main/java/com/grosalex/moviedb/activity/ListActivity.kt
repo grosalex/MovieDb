@@ -13,6 +13,7 @@ import com.grosalex.moviedb.presenter.MoviePresenter
 import com.grosalex.moviedb.provider.MovieProvider
 
 class ListActivity : AppCompatActivity(), MoviesContract.View {
+
     private lateinit var rvList: RecyclerView
     private lateinit var adapter: MoviesAdapter
     private lateinit var presenter: MoviePresenter
@@ -21,12 +22,12 @@ class ListActivity : AppCompatActivity(), MoviesContract.View {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_list)
         rvList = findViewById(R.id.rv_list)
-        initRecyclerview()
+        initRecyclerView()
         presenter = MoviePresenter(this, MovieProvider())
         presenter.sendRequest()
     }
 
-    private fun initRecyclerview() {
+    private fun initRecyclerView() {
         val layoutManager = LinearLayoutManager(this)
         layoutManager.orientation = RecyclerView.VERTICAL
         rvList.layoutManager = layoutManager

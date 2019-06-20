@@ -5,7 +5,8 @@ import com.grosalex.moviedb.api.MovieService
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class MovieDbApp:Application() {
+class MovieDbApp : Application() {
+
     lateinit var service: MovieService
 
     override fun onCreate() {
@@ -19,6 +20,7 @@ class MovieDbApp:Application() {
         service = retrofit.create<MovieService>(MovieService::class.java)
         app = this
     }
+
     companion object {
         lateinit var app: MovieDbApp
 

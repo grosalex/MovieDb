@@ -6,6 +6,7 @@ import com.grosalex.moviedb.model.Movie
 import com.grosalex.moviedb.viewholder.MovieViewHolder
 
 class MoviesAdapter(val movies: ArrayList<Movie>) : RecyclerView.Adapter<MovieViewHolder>() {
+
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): MovieViewHolder = MovieViewHolder(parent)
 
     override fun getItemCount(): Int = movies.size

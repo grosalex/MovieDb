@@ -8,13 +8,14 @@ import com.grosalex.moviedb.activity.ListActivity
 import com.grosalex.moviedb.model.Movie
 
 object Navigator {
-    fun openListActivity(context: Context){
+
+    fun openListActivity(context: Context) {
         val intent = Intent(context, ListActivity::class.java)
         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         context.startActivity(intent)
     }
 
-    fun openDetail(context: Context, movie: Movie){
+    fun openDetail(context: Context, movie: Movie) {
         val intent = Intent(context, DetailActivity::class.java)
         intent.putExtra(DETAIL_KEY, Gson().toJson(movie))
         context.startActivity(intent)
