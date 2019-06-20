@@ -37,9 +37,6 @@ class DetailActivity : AppCompatActivity(), TrailerContract.View {
         val detail = intent.getStringExtra(Navigator.DETAIL_KEY) ?: return
         val movie = Gson().fromJson(detail, Movie::class.java)
 
-        supportActionBar?.setHomeAsUpIndicator(R.drawable.baseline_arrow_back_white_24)
-        supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
         initView()
         bindMovie(movie)
 
@@ -57,6 +54,12 @@ class DetailActivity : AppCompatActivity(), TrailerContract.View {
         ivPoster = findViewById(R.id.iv_poster)
         tvTitle = findViewById(R.id.tv_title)
         tvOverview = findViewById(R.id.tv_overview)
+
+        val ivBack: ImageView = findViewById(R.id.iv_back)
+        ivBack.setOnClickListener {
+            onBackPressed()
+        }
+
         initViewPager()
     }
 
