@@ -10,6 +10,7 @@ import com.grosalex.moviedb.model.Movie
 object Navigator {
     fun openListActivity(context: Context){
         val intent = Intent(context, ListActivity::class.java)
+        intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK or Intent.FLAG_ACTIVITY_CLEAR_TASK)
         context.startActivity(intent)
     }
 
@@ -19,5 +20,6 @@ object Navigator {
         context.startActivity(intent)
     }
 
+    const val PLAYER_KEY = "player_key"
     const val DETAIL_KEY = "detail_key"
 }

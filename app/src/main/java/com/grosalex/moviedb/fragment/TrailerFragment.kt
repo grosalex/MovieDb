@@ -1,24 +1,32 @@
 package com.grosalex.moviedb.fragment
 
+import androidx.fragment.app.Fragment
 import com.google.android.youtube.player.YouTubeInitializationResult
 import com.google.android.youtube.player.YouTubePlayer
 import com.google.android.youtube.player.YouTubePlayerSupportFragment
+import com.grosalex.moviedb.Navigator
 import com.grosalex.moviedb.youtube.YoutubeManager
 
-class TrailerFragment(val key: String) : YouTubePlayerSupportFragment(),
+class TrailerFragment : YouTubePlayerSupportFragment(),
     YouTubePlayer.OnInitializedListener {
-    override fun onInitializationSuccess(p0: YouTubePlayer.Provider?, p1: YouTubePlayer?, p2: Boolean) {
-        if (p1 != null) {
-            YoutubeManager.changePlayer(p1)
-            YoutubeManager.playVideo(key)
+    override fun onInitializationSuccess(
+        provider: YouTubePlayer.Provider?,
+        youTubePlayer: YouTubePlayer?,
+        wasRestored: Boolean
+    ) {
+        if (youTubePlayer != null) {
+            YoutubeManager.changePlayer(youTubePlayer)
+            val key = (this as Fragment).arguments?.getString(Navigator.PLAYER_KEY)
+            if (key != null) {
+                YoutubeManager.playVideo(key)
+            }
         }
     }
 
-    override fun onInitializationFailure(p0: YouTubePlayer.Provider?, p1: YouTubeInitializationResult?) {
-        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
+    override fun onInitializationFailure(provider: YouTubePlayer.Provider?, youTubePlayer: YouTubeInitializationResult?) {
     }
 
-    fun initialize(){
+    fun initialize() {
         initialize(YoutubeManager.YOUTUBE_API_KEY, this)
     }
 }
